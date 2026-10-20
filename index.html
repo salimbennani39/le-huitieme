@@ -354,7 +354,7 @@
     </svg>
     <div id="stops"></div>
   </nav>
-  <a class="btn bar__cta" href="https://wa.me/34647591229" target="_blank" rel="noopener">Book a table</a>
+  <a class="btn bar__cta" href="https://salimbennani39.github.io/showcase/404.html" target="_blank" rel="noopener">Book a table</a>
 </header>
 
 <main id="top">
@@ -370,7 +370,7 @@
       <div class="hero__copy" id="heroText">
         <h1>A table <em>above</em> Casablanca.</h1>
         <p>Lunch and dinner on the 8th floor of an Art Deco landmark.</p>
-        <a class="btn btn--ink" href="https://wa.me/34647591229" target="_blank" rel="noopener">Book a table</a>
+        <a class="btn btn--ink" href="https://salimbennani39.github.io/showcase/404.html" target="_blank" rel="noopener">Book a table</a>
       </div>
       <div class="haze" aria-hidden="true"></div>
       <p class="hero__later" id="heroLater">nothing was really planned.</p>
@@ -545,8 +545,8 @@
           <h2 id="book-h">Book a table.</h2>
           <p class="close__lead">Lunch and dinner. Reservations are taken on WhatsApp; for anything else, call the house.</p>
           <div class="close__actions">
-            <a class="btn" href="https://wa.me/34647591229" target="_blank" rel="noopener">Book a table</a>
-            <a class="btn btn--ghost" href="tel:+34647591229">Call +34 647 591 229</a>
+            <a class="btn" href="https://salimbennani39.github.io/showcase/404.html" target="_blank" rel="noopener">Book a table</a>
+            <a class="btn btn--ghost" href="https://salimbennani39.github.io/showcase/404.html">Call +34 647 591 229</a>
           </div>
           <dl class="facts">
             <dt class="caps">Where</dt>
@@ -740,10 +740,12 @@
   start();
 })();
 </script>
-<script>/* showcase: links that lead nowhere open the Showcase 404 */
+<script>/* showcase: links that lead nowhere, and booking / WhatsApp / call links, open the Showcase 404 */
 (()=>{const U='https://salimbennani39.github.io/showcase/404.html';
-const dead=a=>{const h=(a.getAttribute('href')||'').trim();return h===''||h==='#'||h==='#!'||/^javascript:/i.test(h)};
-addEventListener('click',e=>{if(e.defaultPrevented)return;const a=e.target.closest&&e.target.closest('a');
-if(a&&dead(a)){e.preventDefault();location.href=U;}});})();</script>
+const dead=a=>{const h=(a.getAttribute('href')||'').trim();return h===''||h==='#'||h==='#!'||/^javascript:/i.test(h)||/^(tel:|sms:|mailto:|https?:\/\/(api\.|web\.)?(wa\.me|whatsapp\.com))/i.test(h)};
+addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a');if(!a)return;
+const h=(a.getAttribute('href')||'').trim();const contact=/^(tel:|sms:|mailto:|https?:)/i.test(h);
+if(dead(a)&&(contact||!e.defaultPrevented)){e.preventDefault();e.stopImmediatePropagation();location.href=U;}},true);
+const o=window.open;window.open=function(u){if(/(wa\.me|whatsapp\.com|^tel:)/i.test(String(u||'')))return location.href=U,null;return o.apply(this,arguments)};})();</script>
 </body>
 </html>
